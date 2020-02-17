@@ -43,6 +43,7 @@
 #define device_set_wakeup_enable(dev, val)	do {} while (0)
 #endif
 
+/* commented out by bj
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0)
 static inline void ether_addr_copy(u8 *dst, const u8 *src)
 {
@@ -54,6 +55,7 @@ static inline void ether_addr_copy(u8 *dst, const u8 *src)
         a[2] = b[2];
 }
 #endif
+*/
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,15,0)
 #define IS_ERR_OR_NULL(ptr)			(!ptr)
