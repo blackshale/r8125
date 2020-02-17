@@ -10212,7 +10212,7 @@ static const struct net_device_ops rtl8125_netdev_ops = {
         .ndo_get_stats      = rtl8125_get_stats,
         .ndo_start_xmit     = rtl8125_start_xmit,
         .ndo_tx_timeout     = rtl8125_tx_timeout,
-        .ndo_change_mtu     = rtl8125_change_mtu,
+        //.ndo_change_mtu     = rtl8125_change_mtu,
         .ndo_set_mac_address    = rtl8125_set_mac_address,
         .ndo_do_ioctl       = rtl8125_do_ioctl,
 #if LINUX_VERSION_CODE < KERNEL_VERSION(3,1,0)
@@ -12149,9 +12149,11 @@ process_pkt:
 
                         if (rtl8125_rx_vlan_skb(tp, desc, skb) < 0)
                                 rtl8125_rx_skb(tp, skb);
+
 #if LINUX_VERSION_CODE < KERNEL_VERSION(4,11,0)
-                        dev->last_rx = jiffies;
+                      //  dev->last_rx = jiffies;
 #endif //LINUX_VERSION_CODE < KERNEL_VERSION(4,11,0)
+
                         RTLDEV->stats.rx_bytes += pkt_size;
                         RTLDEV->stats.rx_packets++;
                 }
